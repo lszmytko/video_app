@@ -164,5 +164,13 @@ body{
   .nav-link{
     padding: 5px !important;    
   }
+
+  .video-info{
+    font-size: 0.8rem;
+  }
+
+  .title-row{
+    font-size: 0.9rem;
+  }
 }
 
