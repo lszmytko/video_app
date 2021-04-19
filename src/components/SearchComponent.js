@@ -5,7 +5,7 @@ import moment from 'moment'
 
 export const SearchComponent = ()=>{
     const [inputValue, setInputValue] = useState('')
-    const {videos, setVideos} = useGlobalContext()
+    const {videos, setVideos, loading, setLoading} = useGlobalContext()
     const [mistake, setMistake]= useState({
         'happened': false,
         'message' : null
@@ -40,6 +40,7 @@ export const SearchComponent = ()=>{
         const finalEndPoint = youtubeID ? youtubeEndpoint : vimeoEndPoint
 
         try {
+            setLoading(true)
             setMistake({
                 'happened': false,
                 'message' : null 
@@ -67,7 +68,9 @@ export const SearchComponent = ()=>{
                 })
                 return oldState                
             })
+            setLoading(false)
         } catch (error) {
+            setLoading(false)
             console.log(error);
             setMistake({
                 'happened':true,
@@ -75,19 +78,24 @@ export const SearchComponent = ()=>{
             })
         }    
     }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        findVideoData(inputValue)
+    }
     
     return(
         <div>
-            <div className="search d-flex justify-content-center" xs={{fontSize:'0.8rem'}}>
+            <form className="search d-flex justify-content-center" xs={{fontSize:'0.8rem'}} onSubmit={(e)=>handleSubmit(e)}>
             <InputGroup>                
-                <Input placeholder="Add vimeo / youtube" value={inputValue} onChange={(e)=>{
+                <Input placeholder="Add vimeo / youtube link" value={inputValue} onChange={(e)=>{
                     setInputValue(e.target.value)
                 }}/>
                 <InputGroupAddon addonType="append">
-                <InputGroupText onClick={()=>findVideoData(inputValue)} role="button" disabled={inputValue.length ? false : true}>Search video</InputGroupText>
+                <InputGroupText onClick={()=>findVideoData(inputValue)} role="button" disabled={inputValue.length ? false : true}>Add video</InputGroupText>
                 </InputGroupAddon>
             </InputGroup>
-            </div>
+            </form>
             <div className={mistake.happened ? 'wrongAddressDiv wrongAddressDiv_active' : 'wrongAddressDiv'}>{mistake.message ? mistake.message : 'Holder'}</div>
         </div>
         

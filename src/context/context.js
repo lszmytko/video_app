@@ -36,7 +36,7 @@ const AppContextProvider = ({children})=>{
     const [paginatedFavourites, setPaginatedFavourites] = useState([])
     const [page, setPage] = useState(0)
     const [display, setDisplay] = useState(tilesDisplay)
-
+    const [loading, setLoading] = useState(false)
     
     const toggleDisplay = ()=>{
         setDisplay((prevDisplay)=>{
@@ -92,6 +92,7 @@ const AppContextProvider = ({children})=>{
     }
 
     const sortVideos = (date)=>{
+        setLoading(true)
         if(date === 'newest'){
             const newVideos = videos.sort((a,b)=>{
                 if(moment(b.date).isBefore(moment(a.date))){
@@ -114,6 +115,7 @@ const AppContextProvider = ({children})=>{
             console.log(newVideos)
             setVideos([...newVideos])
         }
+        setLoading(false)
     }
 
     const paginateData = ()=>{
@@ -137,6 +139,7 @@ const AppContextProvider = ({children})=>{
     }
 
     const showFavourites = ()=>{
+        setLoading(true)
         setPage(0)
         setIsFavouriteShown((prevState)=> !prevState)
         if(!favourite.length) return []
@@ -156,6 +159,7 @@ const AppContextProvider = ({children})=>{
         }
 
         setPaginatedFavourites([...MainArray])
+        setLoading(false)
     }
   
 
@@ -190,7 +194,9 @@ const AppContextProvider = ({children})=>{
         showFavourites,
         paginatedFavourites,
         display,
-        toggleDisplay
+        toggleDisplay,
+        loading,
+        setLoading
     }}>{children}</AppContext.Provider>
 }
 

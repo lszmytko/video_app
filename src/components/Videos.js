@@ -3,8 +3,10 @@ import { useGlobalContext } from '../context/context';
 import {Video, VideoModal} from './components';
 import { Container, Row, Col } from 'reactstrap';
 
+
 const Videos = ()=>{
-    const {videos, favourite, isFavouriteShown, page, paginatedVideos, display} = useGlobalContext()
+    const {favourite, isFavouriteShown, page, paginatedVideos, loading} = useGlobalContext()
+    if(loading) return <div className="loader"></div>
     return <Container className="video-container">
         <Row xs="justify-content-center" className="video-row">
             {isFavouriteShown
