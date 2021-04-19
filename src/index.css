@@ -98,6 +98,11 @@ body{
   align-items: center;
 }
 
+.video-info-details{
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .row{
   margin: 0;
   padding: 0;
@@ -170,7 +175,7 @@ body{
   }
 
   .title-row{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 

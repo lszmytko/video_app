@@ -15,9 +15,6 @@ const VideoModal = (props) => {
     toggleModal
   } = useGlobalContext()
 
-  console.log('modal', modal)
-
-
   return (
     <div>
       <Modal isOpen={modal.isActive} toggle={toggleModal} centered={true}>

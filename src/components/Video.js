@@ -14,7 +14,6 @@ const formatNumber = (num) => {
 const Video = (props)=>{
     const {deleteVideo, toggleModal, addToFavourite, display} = useGlobalContext()
     const {id, url, date, img, type, favourite} = props
-    console.log(props)
     return (
         <Col xs={display.details.xs} md={display.details.xs} lg={display.details.lg} className="image-container">
             <Row  className="image-row">
@@ -31,11 +30,11 @@ const Video = (props)=>{
                    <Col xs="3"><FaYoutube size={'1.5rem'}/></Col>
                    <Col xs="3"><span>Added:</span></Col>
                 </Row>
-                <Row className="video-info align-items-center justify-content-stretch">
-                    <Col xs="3">{type === "youtube" ? formatNumber(props.statistics.likeCount) : 'No data'}</Col>
-                    <Col xs="3">{type ===  "youtube" ? formatNumber(props.statistics.dislikeCount) : 'No data'}</Col>
-                    <Col xs="3">{type === "youtube" ? formatNumber(props.statistics.viewCount) : 'No data'}</Col>
-                    <Col xs="3">{moment(date).format('DD.MM.YYYY h:mm:ss a')}</Col>
+                <Row className="video-info align-items-center justify-content-center">
+                    <Col xs="3" className="video-info-details">{type === "youtube" ? formatNumber(props.statistics.likeCount) : 'No data'}</Col>
+                    <Col xs="3" className="video-info-details">{type ===  "youtube" ? formatNumber(props.statistics.dislikeCount) : 'No data'}</Col>
+                    <Col xs="3" className="video-info-details">{type === "youtube" ? formatNumber(props.statistics.viewCount) : 'No data'}</Col>
+                    <Col xs="3" className="video-info-details">{moment(date).format('DD.MM.YYYY hh:mm:ss')}</Col>
                 </Row>
             </Col>
             <Col xs="1" className="sidebar-options">

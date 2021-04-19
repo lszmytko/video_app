@@ -81,14 +81,10 @@ const AppContextProvider = ({children})=>{
         setVideos((prevVideos)=>{
             return prevVideos.map((video)=>{
                 if(video.id === id){
-                    console.log(video)
                     return {...video, favourite:!video.favourite}
                 } else return video
-            })
-            
+            })  
         })
-        
-        console.log('działa')
     }
 
     const sortVideos = (date)=>{
@@ -101,10 +97,8 @@ const AppContextProvider = ({children})=>{
                     return 1
                 } else return 0
             })
-            console.log(newVideos)
             setVideos([...newVideos])
         } else if(date === 'oldest'){
-            console.log('działa sortowanie')
             const newVideos = videos.sort((a,b)=>{
                 if(moment(b.date).isBefore(moment(a.date))){
                     return 1
@@ -112,7 +106,6 @@ const AppContextProvider = ({children})=>{
                     return -1
                 } else return 0
             })
-            console.log(newVideos)
             setVideos([...newVideos])
         }
         setLoading(false)
@@ -121,7 +114,6 @@ const AppContextProvider = ({children})=>{
     const paginateData = ()=>{
         if(!videos.length) return []
         let sitesCount = Math.ceil(videos.length / videosPerPage)
-        console.log(sitesCount)
         let MainArray = []
         let subArray = []
         for (let i = 0; i<videos.length; i++){
@@ -134,7 +126,6 @@ const AppContextProvider = ({children})=>{
             }
             
         }
-        console.log(MainArray)
         setPaginatedVideos([...MainArray])
     }
 
@@ -143,8 +134,6 @@ const AppContextProvider = ({children})=>{
         setPage(0)
         setIsFavouriteShown((prevState)=> !prevState)
         if(!favourite.length) return []
-        console.log('hihihi')
-        let sitesCount = Math.ceil(favourite.length / videosPerPage)
         let MainArray = []
         let subArray = []
         for (let i = 0; i<favourite.length; i++){
