@@ -5,3 +5,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Description
 
 The app stores favourite user's videos from Vimeo and Youtube. It was built using React Js, Reactstrap, Bootstrap and moment.js
+
+It has been deployed at https://nostalgic-pasteur-148320.netlify.app/
