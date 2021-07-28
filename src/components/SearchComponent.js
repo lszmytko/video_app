@@ -40,7 +40,8 @@ export const SearchComponent = ()=>{
         const finalEndPoint = youtubeID ? youtubeEndpoint : vimeoEndPoint
 
         try {
-            setLoading(true)
+            setLoading(true);
+            console.log('kkk')
             setMistake({
                 'happened': false,
                 'message' : null 
