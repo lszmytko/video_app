@@ -24,10 +24,6 @@ const NavComponent = (props) => {
     videos,
   } = useGlobalContext();
 
-  useEffect(() => {
-    console.log("videos", typeof videos);
-  }, []);
-
   const toggle = () => setDropdownOpen(!dropdownOpen);
 
   return (

@@ -1,16 +1,12 @@
 import React from "react";
-import { useGlobalContext } from "../../context/context";
-
-import { Container, Row, Col } from "reactstrap";
-import { BiLike, BiDislike, BiStar, BiPlayCircle } from "react-icons/bi";
+import { Row, Col } from "reactstrap";
+import { BiLike, BiDislike, BiPlayCircle } from "react-icons/bi";
 import { BsFillStarFill } from "react-icons/bs";
-import { AiFillDelete, AiFillPropertySafety } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { FaYoutube } from "react-icons/fa";
 import moment from "moment";
 
-const formatNumber = (num) => {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-};
+import { useGlobalContext } from "../../context/context";
 
 const Video = (props) => {
   const { deleteVideo, toggleModal, addToFavourite, display } =
@@ -55,17 +51,17 @@ const Video = (props) => {
           <Row className="video-info align-items-center justify-content-center">
             <Col xs="3" className="video-info-details">
               {type === "youtube"
-                ? formatNumber(statistics.likeCount)
+                ? statistics.likeCount
                 : "No data"}
             </Col>
             <Col xs="3" className="video-info-details">
               {type === "youtube"
-                ? formatNumber(statistics.dislikeCount)
+                ? statistics.dislikeCount
                 : "No data"}
             </Col>
             <Col xs="3" className="video-info-details">
               {type === "youtube"
-                ? formatNumber(statistics.viewCount)
+                ? statistics.viewCount
                 : "No data"}
             </Col>
             <Col xs="3" className="video-info-details">

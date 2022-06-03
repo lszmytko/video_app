@@ -15,7 +15,7 @@ const AppContextProvider = ({ children }) => {
     isActive: false,
     urlModal: "",
   });
-  const [favourite, setFavourite] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [isFavouriteShown, setIsFavouriteShown] = useState(false);
   const [paginatedVideos, setPaginatedVideos] = useState([]);
   const [paginatedFavourites, setPaginatedFavourites] = useState([]);
@@ -31,7 +31,7 @@ const AppContextProvider = ({ children }) => {
 
   const deleteAllVideos = () => {
     setVideos([]);
-    setFavourite([]);
+    setFavourites([]);
     setPaginatedVideos([]);
   };
 
@@ -103,18 +103,18 @@ const AppContextProvider = ({ children }) => {
     setLoading(true);
     setPage(0);
     setIsFavouriteShown(prevState => !prevState);
-    if (!favourite.length) {
+    if (!favourites.length) {
       setLoading(false);
       return [];
     }
     let MainArray = [];
     let subArray = [];
-    for (let i = 0; i < favourite.length; i++) {
+    for (let i = 0; i < favourites.length; i++) {
       if ((i + 1) % videosPerPage === 1) {
         subArray = [];
       }
-      subArray.push(favourite[i]);
-      if ((i + 1) % videosPerPage === 0 || i + 1 === favourite.length) {
+      subArray.push(favourites[i]);
+      if ((i + 1) % videosPerPage === 0 || i + 1 === favourites.length) {
         MainArray.push(subArray);
       }
     }
@@ -124,7 +124,7 @@ const AppContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setFavourite(videos.filter(video => video.favourite === true));
+    setFavourites(videos.filter(video => video.favourite === true));
     paginateData(6);
     localStorage.setItem("videos", JSON.stringify(videos));
   }, [videos]);
@@ -140,7 +140,7 @@ const AppContextProvider = ({ children }) => {
         toggleModal,
         addToFavourite,
         deleteAllVideos,
-        favourite,
+        favourite: favourites,
         isFavouriteShown,
         setIsFavouriteShown,
         sortVideos,
