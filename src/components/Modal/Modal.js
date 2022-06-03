@@ -1,11 +1,31 @@
-import React, { useState } from "react";
-import { useGlobalContext } from "../../context/context";
-import ModalPres from "./ModalPres";
+import React from "react";
+import { Button, Modal } from "reactstrap";
+import ReactPlayer from "react-player";
 
-const VideoModal = ({ buttonLabel, className }) => {
+import { useGlobalContext } from "../../context/context";
+
+const VideoModal = () => {
   const { modal, toggleModal } = useGlobalContext();
 
-  return <ModalPres modal={modal} toggleModal={toggleModal} />;
+  return (
+    <div>
+      <Modal isOpen={modal.isActive} toggle={toggleModal} centered={true}>
+        <Button color="danger" onClick={toggleModal}>
+          Close
+        </Button>{" "}
+        <div className="player-wrapper">
+          <ReactPlayer
+            url={modal.url}
+            className="react-player"
+            playing
+            width="100%"
+            height="100%"
+            controls={true}
+          />
+        </div>
+      </Modal>
+    </div>
+  );
 };
 
 export default VideoModal;
