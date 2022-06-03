@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/context";
 import moment from "moment";
-import SearchComponentPres from "./SearchComponentPres";
+import { youTubeGetID, vimeoGetID } from "../../utils";
+import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 export const SearchComponent = () => {
   const [inputValue, setInputValue] = useState("");
@@ -10,23 +11,6 @@ export const SearchComponent = () => {
     happened: false,
     message: null,
   });
-
-  const youTubeGetID = (url) => {
-    url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-    return url[2] !== undefined ? url[2].split(/[^0-9a-z_\-]/i)[0] : undefined;
-  };
-
-  const vimeoGetID = (url) => {
-    let regEx =
-      /(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/;
-    let match = url.match(regEx);
-    if (match && match.length == 7) {
-      let videoId = match[6];
-      return videoId;
-    } else {
-      return null;
-    }
-  };
 
   const findVideoData = async (url) => {
     const youtubeID = youTubeGetID(url);
@@ -86,12 +70,18 @@ export const SearchComponent = () => {
   };
 
   return (
-    <SearchComponentPres
-      handleSubmit={handleSubmit}
-      inputValue={inputValue}
-      setInputValue={setInputValue}
-      findVideoData={findVideoData}
-      mistake={mistake}
-    />
-  );
+    <div>
+        <form className="search d-flex justify-content-center" xs={{fontSize:'0.8rem'}} onSubmit={(e)=>handleSubmit(e)}>
+        <InputGroup>
+            <Input placeholder="Add vimeo / youtube link" value={inputValue} onChange={(e)=>{
+                setInputValue(e.target.value)
+            }}/>
+            <InputGroupAddon addonType="append">
+            <InputGroupText onClick={()=>findVideoData(inputValue)} role="button" disabled={inputValue.length ? false : true}>Add video</InputGroupText>
+            </InputGroupAddon>
+        </InputGroup>
+        </form>
+        <div className={mistake.happened ? 'wrongAddressDiv wrongAddressDiv_active' : 'wrongAddressDiv'}>{mistake.message ? mistake.message : 'Holder'}</div>
+    </div>
+ )
 };
