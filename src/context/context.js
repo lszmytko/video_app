@@ -3,7 +3,7 @@ import moment from "moment";
 import { demoData } from "../demoData/demoData";
 import { videosPerPage, tilesDisplay, listDisplay  } from "./static";
 
-const AppContext = React.createContext();
+export const AppContext = React.createContext();
 
 const AppContextProvider = ({ children }) => {
   const [videos, setVideos] = useState(

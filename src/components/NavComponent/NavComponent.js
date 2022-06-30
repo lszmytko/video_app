@@ -24,7 +24,7 @@ const NavComponent = (props) => {
     videos,
   } = useGlobalContext();
 
-  const toggle = () => setDropdownOpen(!dropdownOpen);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   return (
     <div>
@@ -34,7 +34,7 @@ const NavComponent = (props) => {
             Demo
           </NavLink>
         </NavItem>
-        <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
+        <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle nav caret disabled={videos.length ? false : true}>
             Sort
           </DropdownToggle>

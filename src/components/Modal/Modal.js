@@ -9,8 +9,8 @@ const VideoModal = () => {
 
   return (
     <div>
-      <Modal isOpen={modal.isActive} toggle={toggleModal} centered={true}>
-        <Button color="danger" onClick={toggleModal}>
+      <Modal isOpen={modal.isActive} toggle={toggleModal} centered={true} role="modal">
+        <Button color="danger" onClick={toggleModal} >
           Close
         </Button>{" "}
         <div className="player-wrapper">
