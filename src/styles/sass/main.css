@@ -1,7 +1,8 @@
-*, html {
+*,
+html {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -68,8 +69,8 @@ body {
   text-align: center;
   min-width: 300px;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   color: #707070;
 }
 
@@ -87,13 +88,13 @@ body {
 .video-info {
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   line-height: 1rem;
   padding-top: 5px !important;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .video-info-details {
@@ -137,13 +138,13 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 150px;
   height: 150px;
   border-radius: 100%;
   background-color: #007bff;
   -webkit-animation: loaderAnimation 1s infinite;
-          animation: loaderAnimation 1s infinite;
+  animation: loaderAnimation 1s infinite;
 }
 
 @-webkit-keyframes loaderAnimation {
