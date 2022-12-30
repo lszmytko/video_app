@@ -6,13 +6,10 @@ import App from "./App";
 import { AppContextProvider } from "./context/context";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<AppContextProvider>
-			<App />
-		</AppContextProvider>
-	</React.StrictMode>,
-	document.getElementById("root")
+  <React.StrictMode>
+    <AppContextProvider>
+      <App />,
+    </AppContextProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-
-
