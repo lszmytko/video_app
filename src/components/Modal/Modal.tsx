@@ -9,12 +9,7 @@ function VideoModal() {
 
   return (
     <div>
-      <Modal
-        isOpen={modal.isActive}
-        toggle={() => toggleModal()}
-        centered={true}
-        role="modal"
-      >
+      <Modal isOpen={modal.isActive} centered={true} role="modal">
         <Button color="danger" onClick={() => toggleModal()}>
           Close
         </Button>{" "}

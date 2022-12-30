@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-import {
-  Nav,
-  NavItem,
-  Dropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  NavLink,
-} from "reactstrap";
+import { Nav, NavItem, NavLink } from "reactstrap";
 
 import { useGlobalContext } from "../../context/context";
+import NavDropdown from "./SortingDropdown";
 
 const NavComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,7 +10,6 @@ const NavComponent = () => {
   const {
     deleteAllVideos,
     isFavouriteShown,
-    sortVideos,
     changeDemoData,
     showFavourites,
     toggleDisplay,
@@ -34,20 +26,10 @@ const NavComponent = () => {
             Demo
           </NavLink>
         </NavItem>
-        <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown}>
-          <DropdownToggle nav caret disabled={videos.length ? false : true}>
-            Sort
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem onClick={() => sortVideos("newest")}>
-              Sort newest
-            </DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem onClick={() => sortVideos("oldest")}>
-              Sort oldest
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <NavDropdown
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+        />
         <NavItem>
           <NavLink
             href="#"
