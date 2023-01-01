@@ -29,7 +29,7 @@ const PaginationComponent = () => {
           disabled={page === 0 ? true : false}
         />
       </PaginationItem>
-      {videosToShow.map((video, index) => (
+      {videosToShow.map((_, index) => (
         <PaginationItem onClick={() => setPage(index)} key={index}>
           <PaginationLink>{index + 1}</PaginationLink>
         </PaginationItem>
