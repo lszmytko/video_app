@@ -8,6 +8,7 @@ const Videos = () => {
     useGlobalContext();
 
   if (loading) return <div className="loader"></div>;
+
   return (
     <Container className="video-container">
       <Row xs="justify-content-center" className="video-row">

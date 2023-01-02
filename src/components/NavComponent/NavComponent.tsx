@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Nav, NavItem, NavLink } from "reactstrap";
 
 import { useGlobalContext } from "../../context/context";
-import NavDropdown from "./SortingDropdown";
+import SortingDropdown from "./SortingDropdown";
 
 const NavComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -26,7 +26,7 @@ const NavComponent = () => {
             Demo
           </NavLink>
         </NavItem>
-        <NavDropdown
+        <SortingDropdown
           dropdownOpen={dropdownOpen}
           toggleDropdown={toggleDropdown}
         />

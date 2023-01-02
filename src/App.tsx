@@ -1,5 +1,5 @@
 import "./App.css";
-import { useGlobalContext, AppContextProvider } from "./context/context";
+import { useGlobalContext } from "./context/context";
 import {
   SearchComponent,
   Videos,
