@@ -1,5 +1,6 @@
 export const youTubeGetID = (urlParam: string) => {
   const url = urlParam.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  // eslint-disable-next-line no-useless-escape
   return url[2] !== undefined ? url[2].split(/[^0-9a-z_\-]/i)[0] : undefined;
 };
 
